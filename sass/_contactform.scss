@@ -1,0 +1,104 @@
+@use "color";
+@use "breakpoints";
+
+//-------------contactform-------------
+
+.section_inner.contactform{
+    padding-top: 120px;
+    padding-bottom: 60px;
+    @include breakpoints.mq(pc) {
+        max-width: 700px; 
+    }
+}
+
+.contactform-container {
+    
+}
+.contactform-text-contents {
+}
+.contactform-text {
+}
+
+.form {
+    display: flex;
+    flex-direction: column; //inputを縦並び
+    gap: 20px; //input間のギャップ
+    padding-top: 32px;
+    @include breakpoints.mq(pc) {
+        padding-top: 48px; 
+    }
+}
+
+.form-input-container{
+    display: flex;
+    flex-direction: column; //ラベルと入力卵を縦並び
+}
+
+
+.pcbr{
+    display: none; //スマホでは改行なし
+    @include breakpoints.mq(pc) {
+        display: inline; //pcのみ改行
+    }
+}
+
+.form-input {
+    font-family: 游ゴシック, YuGothic, "Noto Sans JP", Arial, "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, "Droid Sans", sans-serif;
+    color: color.$cl-black;
+    padding: 12px;
+    border: 1px solid color.$light-gray2;
+    background-color: color.$light-gray1;
+    &::placeholder {
+        color: color.$light-gray3;
+    }
+}
+
+.contact-text {
+}
+
+.form-text-container{
+    @include breakpoints.mq(pc) {
+        text-align: center; //pcはテキスト中央寄せ
+    }
+}
+
+.form-reply-text{
+    font-size: 14px;
+    margin-bottom: 8px; 
+}
+
+.form-recaptcha-text {
+    font-size: 14px; 
+    margin-bottom: 16px;
+}
+
+.form-recaptcha-link{
+    text-decoration: underline;
+    color: color.$link-blue;
+    transition: opacity .3s;
+    &:hover{
+        opacity: .7;
+    }
+}
+
+.form-submit {
+    display: block;
+    color: white;
+    width: 100%;
+    padding: 12px 0;
+    background-color: color.$rich-blue;
+    border: none;
+    border-radius: 100vh;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+    transition: box-shadow .3s, transform .3s;
+    &:hover{
+        box-shadow: 0 2px 15px rgba(0, 0, 0, .3);
+        transform: translateY(2px);
+    }
+
+    @include breakpoints.mq(pc) {
+        margin: 0 auto;
+        max-width: 400px; 
+    }
+}

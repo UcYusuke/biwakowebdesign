@@ -1,0 +1,686 @@
+@use "color";
+@use "breakpoints";
+@use "contactform";
+
+//-------------common-------------
+
+body{
+    // font-family: 'Oswald', 'Noto Sans JP',sans-serif;
+    font-family: Comfortaa, 游ゴシック, YuGothic, "Noto Sans JP", Arial, "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, "Droid Sans", sans-serif;
+    color: color.$cl-black;
+
+    &.is-fixed {
+        overflow: hidden; //ハンバーガーメニューを開いているときはスクロール無効
+    }
+}
+
+.button{
+    //svgアイコンとテキストを上下中央揃え
+    display: flex;
+    align-items: center;
+    //svgとテキスト全体
+    padding: 10px;
+    width: 180px;
+    margin: 0 auto;
+
+    &:hover .button_icon-path{
+        color: color.$bg-dark; //fontawesomeの文字色
+    }
+
+    @include breakpoints.mq(pc) {
+        transition: background .3s, color .3s, opacity .3s;
+        &:hover{
+           background-color: color.$white; //マウスホバー時の背景
+           .button_icon-path{
+                fill: color.$bg-dark; //マウスホバー時のアイコン
+           }
+           .button_text{
+                color: color.$bg-dark; //マウスホバー時のテキスト
+           }
+        }
+    }
+}
+
+.button_icon{
+    width: 24px; //svgアイコンの幅を統一
+    display: flex;
+    align-items: center;
+}
+
+//svgアイコン部分の色設定
+.button_icon-path{
+    fill: color.$white; 
+    color: white; //fontawesomeの文字色
+}
+
+//svg隣のテキスト
+.button_text{
+    margin-left: 10px; //svgアイコンとテキストの余白
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    color: color.$white;
+}
+
+.section{
+    padding: 48px 0;
+}
+
+.section_inner{
+    padding: 0 32px; //セクションの左右余白
+    @include breakpoints.mq(pc) {
+        max-width: calc(880px + 32px * 2); //PC表示のセクションの最大幅を設定
+        margin: 0 auto;
+    }
+}
+
+.section_head{
+    display: flex;
+    flex-direction: column; //セクションのmainとsubを縦並び
+    margin-bottom: 48px; //セクションタイトルの下部margin
+    text-align: center; //section見出しを画面中央揃え
+    color: color.$rich-blue;
+}
+
+.section-head-works{
+    margin-bottom: 32px;
+}
+
+.section-head-white{
+    //contactとtwitter部分
+    color: #fff;
+}
+
+
+//contactとtwitterは見出し中央寄せ
+.section_head-center{
+    text-align: center;
+}
+
+.section_head-main {
+    font-size: 40px;
+    font-weight: bold;
+    // letter-spacing: 0.1em;
+    @include breakpoints.mq(pc) {
+        font-size: 54px;
+    }
+}
+
+.section-head-sub {
+    font-size: 20px;
+}
+
+.section_contents {
+    margin-top: 40px; //セクションコンテンツとリード文のあいだの余白
+}
+
+.section_lead-text{
+    //リード文
+    font-size: 16px; 
+    line-height: 1.6;
+}
+
+.wrapper{
+    @include breakpoints.mq(pc){
+        display: flex; //pc表示でヘッダーとmainを横並び
+    }
+}
+
+.main{
+    @include breakpoints.mq(pc) {
+        flex-basis: 70%; //コンテンツ（ヘッダーより右部分)の幅
+    }
+}
+
+
+//-------------header-------------
+
+.header{
+    background-color: color.$rich-blue;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    @include breakpoints.mq(pc) {
+        position: relative; //pc版ではヘッダーは画面固定でなく画面左
+        flex-basis: 30%; //ヘッダー部分の幅
+        padding: 50px 20px;
+    }
+
+}
+
+.header_container{
+    position: relative; //ハンバーガーボタンの参照位置
+
+    @include breakpoints.mq(pc) {
+        width: 160px;
+        margin: 0 auto;
+        position: sticky; //スクロールしても固定表示
+        top: 50px; //ヘッダーの上部paddingと同じ位置に固定
+    }
+}
+
+//ヘッダーロゴ
+.header_logo{
+    display: inline-block;
+    padding: 12px;
+    font-size: 20px;
+    color: color.$white;
+    @include breakpoints.mq(pc) {
+        font-size: 30px;
+        letter-spacing: 0.12em;
+        line-height: 1;
+    }
+}
+
+//ハンバーガーボタン
+.header_menu-button{
+    border: none; //buttonタグのデフォルトの線を削除
+    position: absolute;
+    top: calc((68px - 36px) / 2);
+    right: 24px;
+    width: 30px;
+    height: 36px;
+    overflow: hidden; //スクロール無効
+    color: transparent; //「Menu」の文字をスマホで非表示
+    //ハンバーガーボタンの三本線の画像
+    background: url(../img/bg_menu.png) center center no-repeat;
+    background-size: 100% auto;
+
+    @include breakpoints.mq(pc) {
+        display: none; // pcではハンバーガーボタン非表示
+    }
+}
+
+//ハンバーガーボタンの閉じるボタン
+.header .is-checked{
+    background: url(../img/bg_menu-close.png) center center no-repeat;
+    background-size: 100% auto;
+}
+
+.header_contents{
+    //ヘッダーの背景を画面下まで伸ばす
+    //ウインドウの高さ100vhからヘッダーの高さ88pxを引くと、
+    // ヘッダーとコンテンツ合計でウィンドウの高さになる
+    height: calc(100vh - 88px);
+    border-top: 1px solid color.$white; //ヘッダー境界線
+    padding-top: 60px;
+    //スマホではデフォルトでドロワー画面を非表示
+    display: none;
+
+    @include breakpoints.mq(pc) {
+        display: block; //PCではデフォルトで表示
+        border: none; //ロゴ下の下線を非表示
+
+    }
+}
+
+.header_nav-item + .header_nav-item{
+    margin-top: 24px; //ドロワー画面のメニュー同士の間隔
+    
+}
+
+
+
+//-------------fv-------------
+
+.fv{
+    position: relative;
+}
+
+.fv_contents{
+    position: absolute; 
+    bottom: 26px; //画像の下端からの位置
+    left: 0;
+    width: 100%;
+    height: 209px;
+    background: url(../img/sp/bg_fv.png) center center no-repeat;
+    background-size: 100% auto;
+    padding: 32px;
+    
+    @include breakpoints.mq(pc) {
+        background: url(../img/bg_fv.png) center center no-repeat;
+        width: 627px;
+        height: 174px;
+        padding-top: 24px;
+        padding-left: 96px;
+        bottom: 100px;
+        left: 0;
+    }
+    @include breakpoints.mq(tab) {
+        //タブレットは上下方向で中央に配置
+        bottom: 50%;
+        transform: translateY(50%);
+    }
+}
+
+.fv_heading-main {
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.fv_heading-sub {
+    margin-top: 12px;
+    display: block;
+    font-size: 14px;
+}
+
+//-------------service-------------
+
+.service-list {
+    @include breakpoints.mq(pc) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 8%;
+    }
+}
+
+.service_item + .service_item {
+    margin-top: 40px; //itemどうしの余白
+    @include breakpoints.mq(pc) {
+        margin-top: 0;
+    }
+
+}
+.service_item-img {
+    height: 70px;
+    text-align: center; //画像中央寄せ
+    margin-bottom: 14px; //画像とitem-nameのあいだの余白
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.service_item-name {
+    font-size: 18px;
+    color: color.$rich-blue;
+    font-weight: bold;
+    text-align: center; //テキスト中央寄せ
+    margin-bottom: 10px; //item-nameとitem-textのあいだの余白
+}
+
+.service_item-text {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+//-------------works -------------
+
+.works{
+    background-color: color.$light-blue;
+}
+
+.works-list {
+    @include breakpoints.mq(pc) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 6%;
+    }
+}
+
+.works-link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.works-item + .works-item {
+    margin-top: 40px; //itemどうしの余白
+    @include breakpoints.mq(pc) {
+        margin-top: 0;
+    }
+}
+
+.works-item-img {
+    box-shadow: 0 4px 15px 0 rgba(color.$black, 0.15);//リンクイメージ画像に影をつける
+    margin-bottom: 12px; //リンクイメージ画像と見出しのあいだの余白
+    transition: opacity .3s, transform .3s;
+    // margin: 0 auto;
+
+    &:hover{
+        opacity: .7;
+        transform: scale(1.05);
+    }
+}
+
+.works-item-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px; //説明文と「詳しくみる」のあいだの余白
+    transition: opacity .3s;
+
+    &:hover{
+        opacity: .7;
+    }
+
+}
+
+.works-item-link {
+    font-size: 14px;
+    text-decoration: underline; //リンク下線
+}
+
+//-------------about-------------
+
+.about_container{
+    @include breakpoints.mq(pc) {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+}
+
+.about_item-img{
+    margin: 0 auto;
+    width: 200px;
+
+    @include breakpoints.mq(pc) {
+        width: 400px; 
+    }
+
+}
+
+.about-text{
+    margin-bottom: 16px;
+}
+
+.about-name{
+    font-size: 18px;
+    color: color.$rich-blue;
+}
+
+.about-sns-link{
+    color: color.$link-blue;
+    padding-top: 8px;
+    display: flex; //snsアイコンとテキストを横並び
+    align-items: center;
+    transition: opacity .3s;
+    &:hover{
+        opacity: .7;
+    }
+}
+
+.about-sns-link-img{
+    width: 16px;
+}
+
+.about-sns-link-text{
+    margin-left: 12px; //アイコンとテキストのギャップ
+    font-size: 14px;
+}
+
+
+
+
+
+//-------------Workflow-------------
+
+.flow{
+    background-color: color.$light-blue;
+}
+
+.flow_list {
+    margin-top: 64px; //リストとリード文の余白
+    @include breakpoints.mq(pc) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); //pcは3列
+        gap: 32px;
+        margin-bottom: 48px;
+    }
+    
+    @include breakpoints.mq(tab) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); //タブレットは2列
+        gap: 32px 16px;
+    }
+
+}
+
+.flow-item {
+    background-color: #fff;
+    position: relative; //番号の参照位置
+    box-shadow: 0 4px 15px 0 rgba(color.$black, 0.15);
+    padding: 46px 16px 24px;
+}
+
+.flow-item + .flow-item{
+    margin-top: 46px; //リストどうしの余白
+    @include breakpoints.mq(pc) {
+        margin-top: 0;
+    }
+}
+
+//数字部分
+.flow-item-num {
+    position: absolute;
+    top: 0; 
+    left: 0;//左右中央寄せ
+    background-color: color.$rich-blue;
+    color: color.$white;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flow_item-img {
+    margin-bottom: 24px; //画像と見出しの余白
+    text-align: center; //画像中央寄せ
+
+}
+.flow_item-name {
+    font-size: 18px;
+    color: color.$rich-blue;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px; //フロー見出しとテキストとの余白
+}
+
+//-------------FAQ-------------
+
+.qa-container {
+    margin: 50px auto 0;
+    max-width: 300px;
+    width: 100%;
+    margin-bottom: 20px;
+
+    @include breakpoints.mq(pc) {
+        max-width: 944px; 
+    }
+
+    @include breakpoints.mq(tab) {
+        max-width: 707px; 
+    }
+
+  }
+  
+  .qa-list:not(:first-child) {
+    margin-top: 10px;
+  }
+  
+  .question-title {
+    background: #eee;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 20px 40px;
+    position: relative;
+  }
+  
+  .question-title:before {
+    position: absolute;
+    display: block;
+    content: 'Q';
+    top: 20px;
+    left: 12px;
+    color: color.$rich-blue;
+    font-size: 18px;
+  }
+  
+  .question-title:after {
+    position: absolute;
+    display: block;
+    content: '';
+    top: 35%;
+    right: 22px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    transform: rotate(135deg);
+    transition: all .3s ease-in-out;
+  }
+  
+  .question-title.open:after {
+    transform: rotate(-45deg);
+    top: 45%;
+  }
+  
+  .answer-text {
+    display: none;
+    padding: 20px 40px;
+    position: relative;
+  }
+  
+  .answer-text:before {
+    position: absolute;
+    display: block;
+    content: 'A';
+    top: 20px;
+    left: 12px;
+    color: color.$rich-blue;
+    font-size: 18px;
+  }
+
+
+//-------------contact-------------
+
+.contact-list {
+    padding: 40px 16px;
+    @include breakpoints.mq(pc) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); //pcは3列
+        gap: 32px;
+        margin-bottom: 48px;
+    }
+}
+
+.contact-list-item + .contact-list-item {
+    margin-top: 32px;
+    @include breakpoints.mq(pc) {
+        margin-top: 0; 
+    }
+}
+
+.contact-link {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    background-color: color.$rich-blue;
+    border: none;
+    border-radius: 100vh;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+    transition: box-shadow .3s, transform .3s;
+    &:hover{
+        box-shadow: 0 2px 15px rgba(0, 0, 0, .3);
+        transform: translateY(2px);
+    }
+}
+
+.contact-link-text{
+    color: white;
+}
+
+.contact-text{
+    @include breakpoints.mq(pc) {
+        text-align: center; 
+    }
+}
+
+
+//-------------message-------------
+
+.message{
+    background-color: color.$light-blue;
+}
+
+.message_container {
+    @include breakpoints.mq(pc) {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 40px;
+    }
+}
+.message_img {
+    box-shadow: 0 4px 15px 0 rgba(color.$black, 0.15);
+    margin-bottom: 32px;
+}
+
+.message_text {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+//-------------footer-------------
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: color.$light-blue;
+}
+
+.footer_copy {
+    color:color.$rich-blue;
+    font-size: 11px;
+    font-family: 'Noto Sans JP',sans-serif; //copyrightはOswaldでなくNoto Sans
+}
+
+
+/* トップへ戻るボタン */
+.button-to-top{
+    font-size: 120%;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 0;
+    width: 56px;
+    height: 56px;
+    background: color.$middle-blue; //ボタンの背景色
+    // background: linear-gradient(135deg, color.$rich-blue 0%, color.$middle-blue 100%);
+    border: none;
+    border-radius: 50%; /* 円のボタンにする */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    cursor: pointer;
+    /* ページ右下へ固定配置 */
+    position: fixed;
+    right: 20px;
+    bottom: 32px;
+    
+    &:hover .button-to-up-text{
+        transform: translateY(-4px);
+    }
+}
+
+.button-to-up-text{
+    transition: transform .3s;
+}
+
+// 下からふわっと表示
+.element {
+    /* 最初は非表示 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+    transition: opacity 1s, visibility 1s, transform 1s;
+  }
+  /* フェードイン時に入るクラス */
+  .is-fadein {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
