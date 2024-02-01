@@ -267,12 +267,18 @@ body{
     font-size: 14px;
 }
 
+
 //-------------service-------------
 
 .service-list {
     @include breakpoints.mq(pc) {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(3, 1fr);  //pcで3列表示
+        gap: 8%;
+    }
+    @include breakpoints.mq(tab) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);  //タブレットで3列表示
         gap: 8%;
     }
 }
@@ -282,16 +288,16 @@ body{
     @include breakpoints.mq(pc) {
         margin-top: 0;
     }
-
 }
 .service_item-img {
-    height: 70px;
+    img{
+        width: 140px;
+    }
     text-align: center; //画像中央寄せ
     margin-bottom: 14px; //画像とitem-nameのあいだの余白
     display: flex;
     justify-content: center;
     align-items: center;
- 
 }
 
 .service_item-name {
@@ -307,6 +313,43 @@ body{
     line-height: 1.6;
 }
 
+//-------------features-------------
+
+.features-sub-title{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 32px;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column; //各アイテム縦ならび
+
+}
+
+.features-item + .features-item {
+    margin-top: 16px; //itemどうしの余白
+}
+
+.features-item{
+    display: flex; //画像とテキストを横並び
+    align-items: center;
+    &:nth-child(even){
+        flex-direction: row-reverse; //偶数番目は画像が右、テキストが左
+    }
+}
+
+.features-item-img {
+    width: 160px; //画像の大きさ
+    border-radius: 50%;
+}
+
+.features-item-text {
+    font-size: 14px; 
+    line-height: 1.6;
+    padding: 12px;
+}
+
 
 //-------------works -------------
 
@@ -317,7 +360,12 @@ body{
 .works-list {
     @include breakpoints.mq(pc) {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(3, 1fr);  //pcで３列表示
+        gap: 6%;
+    }
+    @include breakpoints.mq(tab) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);  //タブレットで2列表示
         gap: 6%;
     }
 }
@@ -556,6 +604,17 @@ body{
     color: color.$rich-blue;
     font-size: 18px;
   }
+
+
+//-------------Prices-------------
+
+.price-table{
+    margin: 0 auto;
+    border: 1px solid color.$bg-dark;
+}
+
+
+
 
 
 //-------------contact-------------
