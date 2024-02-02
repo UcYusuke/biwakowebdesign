@@ -771,6 +771,47 @@ body.is-fixed {
 .price-table {
   margin: 0 auto;
   border: 1px solid #4a4a4a;
+  border-collapse: collapse;
+  text-align: center;
+  border: 1px solid #AEAEAE;
+}
+
+.price-th-name,
+.price-td-item,
+.price-td-name {
+  padding: 8px;
+  border: 1px solid #AEAEAE;
+}
+
+.price-th-name {
+  font-size: 16px;
+  background-color: #f0f8ff;
+  font-weight: bold;
+}
+
+.price-td-name {
+  font-size: 16px;
+  width: 30%;
+}
+
+.price-td-item {
+  font-size: 20px;
+  color: #1B435D;
+  width: 20%;
+  padding: 12px;
+  border: 1px solid #AEAEAE;
+}
+
+.price-value {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Noto Serif JP";
+  letter-spacing: 0.05em;
+}
+
+.price-unit {
+  font-size: 12px;
+  padding-left: 4px;
 }
 
 .contact-list {

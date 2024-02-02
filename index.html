@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <!-- スタイルシート -->
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -107,7 +107,7 @@
                         <span class="section_head-main">Service</span>
                         <span class="section-head-sub">サービス内容</span>
                     </h2>
-                    <p class="section_lead-text">ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br class="pcbr">ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+                    <p class="section-leadtext section-leadtext-service">ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br class="pcbr">ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</p>
 
                 </div><!-- section_inner -->
             </section>
@@ -174,7 +174,7 @@
                         <span class="section_head-main">Works</span>
                         <span class="section-head-sub">実績紹介</span>
                     </h2>
-                    <p class="section_lead-text">これまで制作したWebサイトです。</p>
+                    <p class="section-leadtext">これまで制作したWebサイトです。</p>
                     <div class="section_contents">
                         <ul class="works-list">
                             <li class="works-item">
@@ -244,7 +244,7 @@
                         <span class="section-head-sub">制作の流れ</span>
                     </h2>
                     <!-- リードテキスト -->
-                    <p class="section_lead-text">ご相談〜納品までの大まかな流れです。状況に応じて柔軟に対応いたします。</p>
+                    <p class="section-leadtext">ご相談〜納品までの大まかな流れです。状況に応じて柔軟に対応いたします。</p>
                     <!-- フローのブロック -->
                     <ol class="flow_list">
                         <li class="flow-item">
@@ -310,6 +310,18 @@
                                 <p>全く問題ありません。<br />パソコンの知識がない方でも、不明な点は一から丁寧にご説明いたします。</p>
                             </dd><!-- /.answer-text -->
                         </dl><!-- /.qa-list -->
+                        <dl class="qa-list">
+                            <dt class="question-title js-title">パソコンの知識が全くありませんが、大丈夫でしょうか？</dt><!-- /.question-title -->
+                            <dd class="answer-text">
+                                <p>全く問題ありません。<br />パソコンの知識がない方でも、不明な点は一から丁寧にご説明いたします。</p>
+                            </dd><!-- /.answer-text -->
+                        </dl><!-- /.qa-list -->
+                        <dl class="qa-list">
+                            <dt class="question-title js-title">パソコンの知識が全くありませんが、大丈夫でしょうか？</dt><!-- /.question-title -->
+                            <dd class="answer-text">
+                                <p>全く問題ありません。<br />パソコンの知識がない方でも、不明な点は一から丁寧にご説明いたします。</p>
+                            </dd><!-- /.answer-text -->
+                        </dl><!-- /.qa-list -->
                     </div><!-- /.qa-container -->
                 </div><!-- section_inner -->
             </section>
@@ -324,22 +336,53 @@
                     <div class="price_container">
                         <table class="price-table">
                             <tr>
-                                <td>ダミーテキスト</td>
-                                <td>●</td>
-                                <td>●</td>
-                                <td>●</td>
+                                <th class="price-th-name"></th>
+                                <th class="price-th-name">Basicプラン<br /><span class="price-value">5,000</span><span class="price-unit">円/月</span></th>
+                                <th class="price-th-name">Standardプラン<br /><span class="price-value">10,000</span><span class="price-unit">円/月</span></th>
+                                <th class="price-th-name">Premiumプラン<br /><span class="price-value">15,000</span><span class="price-unit">円/月</span></th>
                             </tr>
                             <tr>
-                                <td>ダミーテキスト</td>
-                                <td>●</td>
-                                <td>●</td>
-                                <td>●</td>
+                                <td class="price-td-name">追加・修正対応</td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
                             </tr>
                             <tr>
-                                <td>ダミーテキスト</td>
-                                <td>●</td>
-                                <td>●</td>
-                                <td>●</td>
+                                <td class="price-td-name">サーバー・ドメイン管理</td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="price-td-name">セキュリティ対策</td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="price-td-name">バグが起きたときの対処</td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td class="price-td-name">解析データ送付</td>
+                                <td class="price-td-item"></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="price-td-name">お知らせ・記事更新の代行</td>
+                                <td class="price-td-item"></td>
+                                <td class="price-td-item"></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                            </tr>            
+                            <tr>
+                                <td class="price-td-name">オリジナルデザイン</td>
+                                <td class="price-td-item"></td>
+                                <td class="price-td-item"></td>
+                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
                             </tr>
                         </table>
                     </div>
