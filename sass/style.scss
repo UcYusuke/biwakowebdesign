@@ -23,38 +23,19 @@ body{
     width: 180px;
     margin: 0 auto;
 
-    &:hover .button_icon-path{
-        color: color.$bg-dark; //fontawesomeの文字色
-    }
-
     @include breakpoints.mq(pc) {
         transition: background .3s, color .3s, opacity .3s;
         &:hover{
            background-color: color.$white; //マウスホバー時の背景
-           .button_icon-path{
-                fill: color.$bg-dark; //マウスホバー時のアイコン
-           }
-           .button_text{
+           .button-text{
                 color: color.$bg-dark; //マウスホバー時のテキスト
            }
         }
     }
 }
 
-.button_icon{
-    width: 24px; //svgアイコンの幅を統一
-    display: flex;
-    align-items: center;
-}
-
-//svgアイコン部分の色設定
-.button_icon-path{
-    fill: color.$white; 
-    color: white; //fontawesomeの文字色
-}
-
 //svg隣のテキスト
-.button_text{
+.button-text{
     margin-left: 10px; //svgアイコンとテキストの余白
     font-size: 16px;
     letter-spacing: 0.08em;
@@ -65,7 +46,7 @@ body{
     padding: 48px 0;
 }
 
-.section_inner{
+.section-inner{
     padding: 0 32px; //セクションの左右余白
     @include breakpoints.mq(pc) {
         max-width: calc(880px + 32px * 2); //PC表示のセクションの最大幅を設定
@@ -73,7 +54,7 @@ body{
     }
 }
 
-.section_head{
+.section-head{
     display: flex;
     flex-direction: column; //セクションのmainとsubを縦並び
     margin-bottom: 48px; //セクションタイトルの下部margin
@@ -92,11 +73,11 @@ body{
 
 
 //contactとtwitterは見出し中央寄せ
-.section_head-center{
+.section-head-center{
     text-align: center;
 }
 
-.section_head-main {
+.section-head-main {
     font-size: 40px;
     font-weight: bold;
     // letter-spacing: 0.1em;
@@ -109,14 +90,15 @@ body{
     font-size: 20px;
 }
 
-.section_contents {
+.section-contents {
     margin-top: 40px; //セクションコンテンツとリード文のあいだの余白
 }
 
-.section_lead-text{
+.section-leadtext{
     //リード文
     font-size: 16px; 
     line-height: 1.6;
+    text-align: center;
 }
 
 .wrapper{
@@ -147,10 +129,9 @@ body{
         flex-basis: 30%; //ヘッダー部分の幅
         padding: 50px 20px;
     }
-
 }
 
-.header_container{
+.header-container{
     position: relative; //ハンバーガーボタンの参照位置
 
     @include breakpoints.mq(pc) {
@@ -162,7 +143,7 @@ body{
 }
 
 //ヘッダーロゴ
-.header_logo{
+.header-logo{
     display: inline-block;
     padding: 12px;
     font-size: 20px;
@@ -175,7 +156,7 @@ body{
 }
 
 //ハンバーガーボタン
-.header_menu-button{
+.header-menu-button{
     border: none; //buttonタグのデフォルトの線を削除
     position: absolute;
     top: calc((68px - 36px) / 2);
@@ -199,7 +180,7 @@ body{
     background-size: 100% auto;
 }
 
-.header_contents{
+.header-contents{
     //ヘッダーの背景を画面下まで伸ばす
     //ウインドウの高さ100vhからヘッダーの高さ88pxを引くと、
     // ヘッダーとコンテンツ合計でウィンドウの高さになる
@@ -216,7 +197,7 @@ body{
     }
 }
 
-.header_nav-item + .header_nav-item{
+.header-nav-item + .header-nav-item{
     margin-top: 24px; //ドロワー画面のメニュー同士の間隔
     
 }
@@ -229,7 +210,7 @@ body{
     position: relative;
 }
 
-.fv_contents{
+.fv-contents{
     position: absolute; 
     bottom: 26px; //画像の下端からの位置
     left: 0;
@@ -255,13 +236,13 @@ body{
     }
 }
 
-.fv_heading-main {
+.fv-heading-main {
     display: block;
     font-size: 40px;
     font-weight: bold;
 }
 
-.fv_heading-sub {
+.fv-heading-sub {
     margin-top: 12px;
     display: block;
     font-size: 14px;
@@ -278,18 +259,18 @@ body{
     }
     @include breakpoints.mq(tab) {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);  //タブレットで3列表示
+        grid-template-columns: repeat(3, 1fr);  //タブレットで3列表示
         gap: 8%;
     }
 }
 
-.service_item + .service_item {
+.service-item + .service-item {
     margin-top: 40px; //itemどうしの余白
     @include breakpoints.mq(pc) {
         margin-top: 0;
     }
 }
-.service_item-img {
+.service-item-img {
     img{
         width: 140px;
     }
@@ -300,7 +281,7 @@ body{
     align-items: center;
 }
 
-.service_item-name {
+.service-item-name {
     font-size: 18px;
     color: color.$rich-blue;
     font-weight: bold;
@@ -308,7 +289,7 @@ body{
     margin-bottom: 10px; //item-nameとitem-textのあいだの余白
 }
 
-.service_item-text {
+.service-item-text {
     font-size: 14px;
     line-height: 1.6;
 }
@@ -328,7 +309,7 @@ body{
 }
 
 .features-item + .features-item {
-    margin-top: 16px; //itemどうしの余白
+    margin-top: 12px; //itemどうしの余白
 }
 
 .features-item{
@@ -360,12 +341,12 @@ body{
 .works-list {
     @include breakpoints.mq(pc) {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);  //pcで３列表示
+        grid-template-columns: repeat(2, 1fr);  //pcで３列表示
         gap: 6%;
     }
     @include breakpoints.mq(tab) {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);  //タブレットで2列表示
+        grid-template-columns: repeat(2, 1fr);  //タブレットで2列表示
         gap: 6%;
     }
 }
@@ -405,7 +386,15 @@ body{
     &:hover{
         opacity: .7;
     }
+}
 
+.works-item-namesample{
+    font-size: 12px;
+    padding-left: 8px;
+}
+
+.works-item-namesub{
+    font-size: 12px;
 }
 
 .works-item-link {
@@ -415,7 +404,7 @@ body{
 
 //-------------about-------------
 
-.about_container{
+.about-container{
     @include breakpoints.mq(pc) {
         display: flex;
         align-items: center;
@@ -423,7 +412,7 @@ body{
     }
 }
 
-.about_item-img{
+.about-item-img{
     margin: 0 auto;
     width: 200px;
 
@@ -472,7 +461,7 @@ body{
     background-color: color.$light-blue;
 }
 
-.flow_list {
+.flow-list {
     margin-top: 64px; //リストとリード文の余白
     @include breakpoints.mq(pc) {
         display: grid;
@@ -517,12 +506,12 @@ body{
     justify-content: center;
 }
 
-.flow_item-img {
+.flow-item-img {
     margin-bottom: 24px; //画像と見出しの余白
     text-align: center; //画像中央寄せ
 
 }
-.flow_item-name {
+.flow-item-name {
     font-size: 18px;
     color: color.$rich-blue;
     font-weight: bold;
@@ -534,7 +523,7 @@ body{
 
 .qa-container {
     margin: 50px auto 0;
-    max-width: 300px;
+    // max-width: 300px;
     width: 100%;
     margin-bottom: 20px;
 
@@ -620,6 +609,7 @@ body{
 .price-th-name,
 .price-td-item,
 .price-td-name{
+    vertical-align: middle; //縦方向中央寄せ
     padding: 8px;
     border: 1px solid color.$light-gray3;
 }
