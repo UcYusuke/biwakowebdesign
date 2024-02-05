@@ -15,7 +15,7 @@ body{
 }
 
 .button{
-    //svgアイコンとテキストを上下中央揃え
+    //アイコンとテキストを上下中央揃え
     display: flex;
     align-items: center;
     //svgとテキスト全体
@@ -101,106 +101,161 @@ body{
     text-align: center;
 }
 
-.wrapper{
-    @include breakpoints.mq(pc){
-        display: flex; //pc表示でヘッダーとmainを横並び
-    }
-}
-
-.main{
-    @include breakpoints.mq(pc) {
-        flex-basis: 70%; //コンテンツ（ヘッダーより右部分)の幅
-    }
-}
-
 
 //-------------header-------------
 
+/* header */
 .header{
-    background-color: color.$rich-blue;
-    position: fixed; 
+    width: 100%;
+    border-bottom: 1px solid color.$rich-blue ;
+    padding: 12px;
+    position: fixed;
+    z-index: 999;
     top: 0;
     left: 0;
-    width: 100%;
-    z-index: 999;
 
-    @include breakpoints.mq(pc) {
-        position: relative; //pc版ではヘッダーは画面固定でなく画面左
-        flex-basis: 30%; //ヘッダー部分の幅
-        padding: 50px 20px;
+    @include breakpoints.mq('pc'){
+        padding: 16px;
     }
 }
 
-.header-container{
-    position: relative; //ハンバーガーボタンの参照位置
-
-    @include breakpoints.mq(pc) {
-        width: 160px;
-        margin: 0 auto;
-        position: sticky; //スクロールしても固定表示
-        top: 50px; //ヘッダーの上部paddingと同じ位置に固定
-    }
-}
-
-//ヘッダーロゴ
 .header-logo{
-    display: inline-block;
-    padding: 12px;
-    font-size: 20px;
-    color: color.$white;
-    @include breakpoints.mq(pc) {
-        font-size: 30px;
-        letter-spacing: 0.12em;
-        line-height: 1;
+    width: 200px;
+    margin: 0 auto;
+
+    @include breakpoints.mq('pc'){
+        margin: 0;
     }
 }
 
-//ハンバーガーボタン
-.header-menu-button{
-    border: none; //buttonタグのデフォルトの線を削除
-    position: absolute;
-    top: calc((68px - 36px) / 2);
-    right: 24px;
-    width: 30px;
-    height: 36px;
-    overflow: hidden; //スクロール無効
-    color: transparent; //「Menu」の文字をスマホで非表示
-    //ハンバーガーボタンの三本線の画像
-    background: url(../img/bg_menu.png) center center no-repeat;
-    background-size: 100% auto;
+.header-nav-list{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 
-    @include breakpoints.mq(pc) {
-        display: none; // pcではハンバーガーボタン非表示
+    @include breakpoints.mq('pc'){
+        gap: 40px;
     }
 }
 
-//ハンバーガーボタンの閉じるボタン
-.header .is-checked{
-    background: url(../img/bg_menu-close.png) center center no-repeat;
-    background-size: 100% auto;
-}
+.header-nav-link{
+    color: color.$cl-black;
 
-.header-contents{
-    //ヘッダーの背景を画面下まで伸ばす
-    //ウインドウの高さ100vhからヘッダーの高さ88pxを引くと、
-    // ヘッダーとコンテンツ合計でウィンドウの高さになる
-    height: calc(100vh - 88px);
-    border-top: 1px solid color.$white; //ヘッダー境界線
-    padding-top: 60px;
-    //スマホではデフォルトでドロワー画面を非表示
-    display: none;
+    @include breakpoints.mq('pc'){
+        transition: opacity .3s;
+    }
 
-    @include breakpoints.mq(pc) {
-        display: block; //PCではデフォルトで表示
-        border: none; //ロゴ下の下線を非表示
-
+    &:hover{
+        @include breakpoints.mq('pc'){
+            opacity: .7;
+        }
     }
 }
 
-.header-nav-item + .header-nav-item{
-    margin-top: 24px; //ドロワー画面のメニュー同士の間隔
+.header-nav-item{
+    /* menuボタンとドロワーメニューを縦並びにしてセンター揃え */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.header-inner{
+    @include breakpoints.mq('pc'){
+        display: flex;
+        max-width: 1080px;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+}
+
+// .header{
+//     background-color: color.$rich-blue;
+//     // position: fixed; 
+//     // top: 0;
+//     // left: 0;
+//     // width: 100%;
+//     // z-index: 999;
+
+//     // @include breakpoints.mq(pc) {
+//     //     position: relative; //pc版ではヘッダーは画面固定でなく画面左
+//     //     flex-basis: 30%; //ヘッダー部分の幅
+//     //     padding: 50px 20px;
+//     // }
+// }
+
+// .header-container{
+//     position: relative; //ハンバーガーボタンの参照位置
+
+//         // @include breakpoints.mq(pc) {
+//         //     width: 160px;
+//         //     margin: 0 auto;
+//         //     position: sticky; //スクロールしても固定表示
+//         //     top: 50px; //ヘッダーの上部paddingと同じ位置に固定
+//         // }
+// }
+
+// //ヘッダーロゴ
+// .header-logo{
+//     display: inline-block;
+//     padding: 12px;
+//     font-size: 20px;
+//     color: color.$white;
+//     @include breakpoints.mq(pc) {
+//         font-size: 30px;
+//         letter-spacing: 0.12em;
+//         line-height: 1;
+//     }
+// }
+
+// //ハンバーガーボタン
+// .header-menu-button{
+//     border: none; //buttonタグのデフォルトの線を削除
+//     position: absolute;
+//     top: calc((68px - 36px) / 2);
+//     right: 24px;
+//     width: 30px;
+//     height: 36px;
+//     overflow: hidden; //スクロール無効
+//     color: transparent; //「Menu」の文字をスマホで非表示
+//     //ハンバーガーボタンの三本線の画像
+//     background: url(../img/bg_menu.png) center center no-repeat;
+//     background-size: 100% auto;
+
+//     @include breakpoints.mq(pc) {
+//         display: none; // pcではハンバーガーボタン非表示
+//     }
+// }
+
+// //ハンバーガーボタンの閉じるボタン
+// .header .is-checked{
+//     background: url(../img/bg_menu-close.png) center center no-repeat;
+//     background-size: 100% auto;
+// }
+
+// .header-contents{
+//     //ヘッダーの背景を画面下まで伸ばす
+//     //ウインドウの高さ100vhからヘッダーの高さ88pxを引くと、
+//     // ヘッダーとコンテンツ合計でウィンドウの高さになる
+//     height: calc(100vh - 88px);
+//     border-top: 1px solid color.$white; //ヘッダー境界線
+//     padding-top: 60px;
+//     //スマホではデフォルトでドロワー画面を非表示
+//     display: none;
+
+//     @include breakpoints.mq(pc) {
+//         // display: block; //PCではデフォルトで表示
+//         border: none; //ロゴ下の下線を非表示
+
+//     }
+// }
+
+// .header-nav-item + .header-nav-item{
+//     margin-top: 24px; //ドロワー画面のメニュー同士の間隔
     
-}
+// }
 
 
 
@@ -378,28 +433,14 @@ body{
 }
 
 .works-item-name {
-    font-size: 14px;
     font-weight: bold;
+    color: color.$rich-blue;
     margin-bottom: 6px; //説明文と「詳しくみる」のあいだの余白
     transition: opacity .3s;
 
     &:hover{
         opacity: .7;
     }
-}
-
-.works-item-namesample{
-    font-size: 12px;
-    padding-left: 8px;
-}
-
-.works-item-namesub{
-    font-size: 12px;
-}
-
-.works-item-link {
-    font-size: 14px;
-    text-decoration: underline; //リンク下線
 }
 
 //-------------about-------------
@@ -422,19 +463,21 @@ body{
 
 }
 
-.about-text{
-    margin-bottom: 16px;
+.about-text + .about-text{
+    margin-top: 16px; //テキストのブロック間の余白
 }
 
 .about-name{
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: bold;
     color: color.$rich-blue;
 }
 
 .about-sns-link{
     color: color.$link-blue;
-    padding-top: 8px;
+    margin-top: 32px; //テキストとsnsの余白
     display: flex; //snsアイコンとテキストを横並び
+    // justify-content: center;
     align-items: center;
     transition: opacity .3s;
     &:hover{
@@ -443,7 +486,7 @@ body{
 }
 
 .about-sns-link-img{
-    width: 16px;
+    width: 24px; //アイコンの大きさ
 }
 
 .about-sns-link-text{
@@ -598,51 +641,60 @@ body{
 //-------------Prices-------------
 
 .price-table{
+    width: 100%;
     margin: 0 auto;
-    border: 1px solid color.$bg-dark;
     border-collapse: collapse;
     text-align: center;
     border: 1px solid color.$light-gray3;
+
+    @include breakpoints.mq(pc) {
+        max-width: 1140px;
+    }
     
 }
 
 .price-th-name,
-.price-td-item,
+.price-td-check,
 .price-td-name{
     vertical-align: middle; //縦方向中央寄せ
     padding: 8px;
-    border: 1px solid color.$light-gray3;
+    border-bottom: 1px solid color.$light-gray3;
+    border-right: none;
 }
 
 
 .price-th-name {
+    //見出し
     font-size: 16px;
     background-color: color.$light-blue;
-    font-weight: bold;
+    font-weight: 600; //semibold
+    text-transform: uppercase;
+
 }
 
 .price-td-name{
+    //項目名
     font-size: 16px;
     width: 30%;
+    text-align: left;
+    padding: 12px 12px 12px 16px;
 }
 
-.price-td-item{
+.price-td-check{
     font-size: 20px;
     color: color.$rich-blue;
     width: 20%;
-    padding: 12px;
-    border: 1px solid color.$light-gray3;
 }
 
 .price-value{
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 20px;
     font-family: 'Noto Serif JP';
     letter-spacing: 0.05em;
 }
 
 .price-unit{
     font-size: 12px;
+    font-weight: bold;
     padding-left: 4px;
 }
 

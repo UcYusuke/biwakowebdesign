@@ -17,8 +17,8 @@
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- スタイルシート -->
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -26,13 +26,38 @@
 
 <body>
     <div class="wrapper">
+
+        <header class="header">
+            <div class="header-inner">
+                <h1 class="header-logo">
+                    <img src="./img/logo.svg" alt="Sweet Delight">
+                </h1>
+                <nav class="header-nav">
+                    <ul class="header-nav-list">
+                        <li class="header-nav-item">
+                            <a href="#about" class="header-nav-link">About</a>
+                        </li>
+                        <li class="header-nav-item">
+                            <a href="#" id="js-drawer-button" class="header-nav-link">Menu</a>
+                        </li>
+                        <li class="header-nav-item">
+                            <a href="#shop" class="header-nav-link">Shop</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+    <!--
         <header class="header">
             <div class="header-container">
-                <div class="header-logo">
-                    <a href="./index.html"> ***</a>
-                </div>
+                <h1 class="header-logo">
+                    <a href="#">
+                        <img src="" alt="Sweet Delight">
+                    </a>
+                </h1>
 
-                <!-- ハンバーガーボタン -->
+               
                 <button type="button" id="js-button-drawer" class="header-menu-button">Menu</button>
 
                 <div id="js-drawer" class="header-contents">
@@ -77,7 +102,8 @@
                     </nav>
                 </div>
             </div>
-        </header>
+        </header> 
+    -->
 
 
 
@@ -182,7 +208,7 @@
                                     <!-- サイトのイメージ -->
                                     <img src="./img/img_works1.png" class="works-item-img" alt="デモサイトイメージ" width="480"
                                         height="320">
-                                    <p class="works-item-name">不動産サイト<span class="works-item-namesample">(サンプル)</span></p>
+                                    <p class="works-item-name">不動産サイト サンプル</p>
                                     <p class="works-item-namesub">Wordpress 既存テーマSWELL使用</span></p>
                                 </a>
                             </li>
@@ -191,7 +217,7 @@
                                     <!-- サイトのイメージ -->
                                     <img src="./img/img_works2.png" class="works-item-img" alt="デモサイトイメージ" width="480"
                                         height="320">
-                                    <p class="works-item-name">カフェサイト<span class="works-item-namesample">(サンプル)</span></p>
+                                    <p class="works-item-name">カフェサイト サンプル</span></p>
                                     <p class="works-item-namesub">Wordpress カスタマイズデザイン</p>
                                 </a>
                             </li>
@@ -220,9 +246,9 @@
                             <p class="about-text">
                                 こんにちは、滋賀県でフリーランスとしてWeb制作のお仕事をしております。<br />15年間、製造メーカで設計・品質保証の仕事をした後、職業訓練校とデイトラさんでWeb制作を習得しました。<br />趣味は、旅行、ブログ、写真、漫画です。</p>
                             <p class="about-text">お客様の素晴らしいサービスや商品をWeb上で輝かせ、喜んでいただくことが私にとっての喜びです。</p>
-                            <a href="https://twitter.com/yusuke043462958" class="about-sns-link" target="_blank">
-                                <img src="./img/x-logo-black.png" alt="Xのロゴマーク" class="about-sns-link-img">
-                                <p class="about-sns-link-text">@yusuke043462958</p>
+                            <a href="#" class="about-sns-link" target="_blank">
+                                <img src="./img/Instagram_Glyph_Gradient.png" alt="Instagramのロゴマーク" class="about-sns-link-img">
+                                <p class="about-sns-link-text">@BiwakoWebDesign.</p>
                             </a>
                         </div>
                     </div><!-- about-container -->
@@ -331,53 +357,53 @@
                         <table class="price-table">
                             <tr>
                                 <th class="price-th-name"></th>
-                                <th class="price-th-name">Basicプラン<br /><span class="price-value">5,000</span><span class="price-unit">円/月</span></th>
-                                <th class="price-th-name">Standardプラン<br /><span class="price-value">10,000</span><span class="price-unit">円/月</span></th>
-                                <th class="price-th-name">Premiumプラン<br /><span class="price-value">15,000</span><span class="price-unit">円/月</span></th>
+                                <th class="price-th-name">Basic<br /><span class="price-value">5,000</span><span class="price-unit">円/月</span></th>
+                                <th class="price-th-name">Standard<br /><span class="price-value">10,000</span><span class="price-unit">円/月</span></th>
+                                <th class="price-th-name">Premium<br /><span class="price-value">15,000</span><span class="price-unit">円/月</span></th>
                             </tr>
                             <tr>
                                 <td class="price-td-name">追加・修正対応</td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
                             </tr>
                             <tr>
                                 <td class="price-td-name">サーバー・ドメイン管理</td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
                             </tr>
                             <tr>
                                 <td class="price-td-name">セキュリティ対策</td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
                             </tr>
                             <tr>
                                 <td class="price-td-name">バグが起きたときの対処</td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
                             </tr>
 
                             <tr>
                                 <td class="price-td-name">解析データ送付</td>
-                                <td class="price-td-item"></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
                             </tr>
                             <tr>
-                                <td class="price-td-name">お知らせ・記事更新の代行</td>
-                                <td class="price-td-item"></td>
-                                <td class="price-td-item"></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
+                                <td class="price-td-name">記事更新の代行</td>
+                                <td class="price-td-check"></td>
+                                <td class="price-td-check"></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
                             </tr>            
-                            <tr>
+                            <!-- <tr>
                                 <td class="price-td-name">オリジナルデザイン</td>
-                                <td class="price-td-item"></td>
-                                <td class="price-td-item"></td>
-                                <td class="price-td-item"><i class="fa-solid fa-circle-check"></i></td>
-                            </tr>
+                                <td class="price-td-check"></td>
+                                <td class="price-td-check"></td>
+                                <td class="price-td-check"><i class="fa-solid fa-circle-check"></i></td>
+                            </tr> -->
                         </table>
                     </div>
                 </div><!-- section-inner -->
